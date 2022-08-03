@@ -1,9 +1,9 @@
 const testBookings = [
   { id: "5fwrgu4i7k55hl6zi", userID: 23, date: "2022/01/23", roomNumber: 21 },
   { id: "5fwrgu4i7k55hl70q", userID: 31, date: "2022/02/13", roomNumber: 5 },
-  { id: "5fwrgu4i7k55hl8ec", userID: 35, date: "2021/11/23", roomNumber: 6 },
+  { id: "5fwrgu4i7k55hl8ec", userID: 27, date: "2021/11/23", roomNumber: 6 },
   { id: "5fwrgu4i7k55hl8dj", userID: 14, date: "2023/12/07", roomNumber: 1 },
-  { id: "5fwrgu4i7k55hl6vp", userID: 31, date: "2023/12/15", roomNumber: 14 },
+  { id: "5fwrgu4i7k55hl6vp", userID: 27, date: "2023/12/15", roomNumber: 14 },
 ];
 
 const testRooms = [
@@ -56,3 +56,5 @@ const testCustomers = [
   { id: 50, name: "Eldridge Muller" },
   { id: 1, name: "Leatha Ullrich" },
 ];
+
+module.exports = { testBookings, testRooms, testCustomers };
