@@ -7,12 +7,10 @@ class Booking {
     this.roomDetails;
   }
 
-getRoomDetails(rooms)  {
-this.roomDetails = rooms.find((room) => {
-  return this.roomNumber === room.number;
-})
-
+  getRoomDetails(rooms) {
+    this.roomDetails = rooms.find((room) => {
+      return this.roomNumber === room.number;
+    });
+  }
 }
-
-}
-export default Booking
+export default Booking;

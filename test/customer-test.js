@@ -2,6 +2,7 @@ import chai from "chai";
 const expect = chai.expect;
 import Customer from "../src/classes/Customer";
 import Booking from "../src/classes/Booking";
+import Room from "../src/classes/Room";
 import { testCustomers, testBookings, testRooms } from "../src/testData";
 
 describe("customer", () => {
@@ -9,23 +10,13 @@ describe("customer", () => {
 });
 
 let customer1;
-let booking1;
-let booking2;
-let booking3;
-let booking4;
-let booking5;
 let bookingsData;
 let roomsData;
 
 beforeEach(() => {
   customer1 = new Customer(testCustomers[1]);
-  booking1 = new Booking(testBookings[0]);
-  booking2 = new Booking(testBookings[1]);
-  booking3 = new Booking(testBookings[2]);
-  booking4 = new Booking(testBookings[3]);
-  booking5 = new Booking(testBookings[4]);
-  bookingsData = [booking1, booking2, booking3, booking4, booking5];
-  roomsData = testRooms;
+  bookingsData = testBookings.map((booking) => new Booking(booking));
+  roomsData = testRooms.map((room) => new Room(room));
 });
 
 it("should be able to retrieve  data from test file", () => {
@@ -69,5 +60,9 @@ it("should be able to retrieve bookings related to the customer AND the room det
       },
     },
   ]);
+});
 
+it("should be able to find the sum of the customers bookings cost", () => {
+  customer1.getBookings(bookingsData, roomsData);
+  expect(customer1.getPoints()).to.equal(722.6);
 });

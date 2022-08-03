@@ -1,4 +1,3 @@
-import Booking from "./Booking";
 
 class Customer {
   constructor(customerData) {
@@ -8,12 +7,18 @@ class Customer {
   }
 
   getBookings(bookings, rooms) {
-    this.bookings = bookings.filter((booking) => {
-      return booking.userID === this.id;
-    });
+    this.bookings = bookings.filter(booking => booking.userID === this.id
+    );
     this.bookings.forEach((booking) => {
-      booking.getRoomDetails(rooms)
+      booking.getRoomDetails(rooms);
     });
+  }
+
+  getPoints() {
+    return this.bookings.reduce((total, cur) => {
+      total += cur.roomDetails.costPerNight;
+      return total;
+    }, 0);
   }
 }
 
