@@ -1,22 +1,20 @@
+import Booking from "./Booking";
+
 class Customer {
   constructor(customerData) {
     this.id = customerData.id;
     this.name = customerData.name;
-    this.bookings = []
+    this.bookings = [];
   }
 
-getBookings(bookings) {
- this.bookings = bookings.filter((booking) => {
-    return booking.userID === this.id
-  })
-
+  getBookings(bookings, rooms) {
+    this.bookings = bookings.filter((booking) => {
+      return booking.userID === this.id;
+    });
+    this.bookings.forEach((booking) => {
+      booking.getRoomDetails(rooms)
+    });
+  }
 }
 
-
-
-
-
-}
-
-
-export default Customer
+export default Customer;
