@@ -12,16 +12,16 @@ describe("booking", () => {
 let room1;
 let booking1;
 let bookingsData;
-let roomsData
+let roomsData;
 
 beforeEach(() => {
   booking1 = new Booking(testBookings[1]);
-  room1 = new Room (testRooms[0])
+  room1 = new Room(testRooms[0]);
   bookingsData = testBookings;
-  roomsData = testRooms
+  roomsData = testRooms;
 });
 
-it('should be able to retrieve room details that have the same room number in the booking', () => {
+it("should be able to retrieve room details that have the same room number in the booking", () => {
   booking1.getRoomDetails(roomsData);
   expect(booking1.roomDetails).to.deep.equal({
     bedSize: "twin",
@@ -31,4 +31,4 @@ it('should be able to retrieve room details that have the same room number in th
     number: 21,
     roomType: "junior suite",
   });
-})
+});
