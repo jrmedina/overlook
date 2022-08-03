@@ -3,11 +3,21 @@
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+import Booking from './classes/booking';
+import Room from './classes/room';
+import Customer from './classes/customer'
 import { allData } from './apiCalls'
 
-let currentData = allData
-window.addEventListener("load", testFetch);
-function testFetch() {
-currentData.then(data => console.log(data))
+let customer;
+let room;
+let booking;
+
+window.addEventListener("load", getData);
+
+function getData() {
+allData.then(data => {
+customer = data[0]
+room = data[1]
+booking = data[2]
+})
 }
