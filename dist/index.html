@@ -1,16 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A Hotel Website" />
+    <title>Hotel</title>
+  </head>
 
-</body>
+  <body>
+    <!-- -----------Nav Bar-------------- -->
+    <nav class="nav-bar">
+      <button type="button" class="nav-booking">Booking</button>
+      <button type="button" class="nav-login">log-in</button>
+    </nav>
+
+    <!-- -----------Login Section-------------- -->
+    <section class="login-portal hidden">
+      <button class="close-portal">X</button>
+      <h3>Username:</h3>
+      <input class="username-input" placeholder="input here" />
+      <h3>Password:</h3>
+      <input class="password-input" type="password" placeholder="input here" />
+      <p class="login-error hidden">incorrect credentials, try again!</p>
+      <button class="login-btn" type="button">Submit</button>
+    </section>
+
+    <!-- -----------Guest Dashboard-------------- -->
+    <section class="guest-dashboard hidden">
+      <section class="guest-points">Current Points: 42020</section>
+      <header class="greeting">Welcome back, Josh</header>
+      <section class="upcoming-stays">
+        <h3>Upcoming Stays:</h3>
+        <article class="reservation-details upcoming">
+          <img class="room-img past" src="" />
+          <p class="reservation-date upcoming">2019/28/06</p>
+          <p class="reservation-cost upcoming">$675.07</p>
+        </article>
+      </section>
+      <section class="past-stays">
+        Previous Stays:
+        <h3>Previous Stays:</h3>
+        <article class="reservation-details past">
+          <img class="room-img past" src="" />
+          <p class="reservation-date past">2030/28/06</p>
+          <p class="reservation-cost past">$675.07</p>
+        </article>
+      </section>
+    </section>
+
+    <!-- -----------Booking Tab-------------- -->
+    <section class="booking-tab hidden">
+      <section class="calendar">
+        <input type="date" />
+      </section>
+      <section class="room-details">
+        [details for only available rooms]
+        <button class="filter-details" type="button">filter</button>
+      </section>
+    </section>
+
+    <!-- -----------Filtered Results-------------- -->
+    <section class="filtered-results hidden">
+      <article class="reservation-details filtered">
+        <img class="room-img filtered" src="" />
+        <p class="reservation-date filtered">2030/28/06</p>
+        <p class="reservation-cost filtered">$675.07</p>
+      </article>
+
+      <!-- -----------Booking Error-------------- -->
+      <section class="booking-error hidden">
+        <button class="close-error">X</button>
+        <h2>
+          We appologize! This day is already booked, please try selecting
+          another date.
+        </h2>
+      </section>
+    </section>
+
+    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+    <script src="bundle.js"></script>
+  </body>
 </html>
