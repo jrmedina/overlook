@@ -2,6 +2,8 @@ const testBookings = [
   { id: "5fwrgu4i7k55hl6vp", userID: 27, date: "2023/12/15", roomNumber: 14 },
   { id: "5fwrgu4i7k55hl6zi", userID: 23, date: "2022/01/23", roomNumber: 21 },
   { id: "5fwrgu4i7k55hl70q", userID: 31, date: "2022/02/13", roomNumber: 5 },
+  { id: "5fwrgu4i7k55hl70r", userID: 30, date: "2022/02/13", roomNumber: 4 },
+  { id: "5fwrgu4i7k55hl70s", userID: 29, date: "2022/02/13", roomNumber: 3 },
   { id: "5fwrgu4i7k55hl8ec", userID: 27, date: "2021/11/23", roomNumber: 6 },
   { id: "5fwrgu4i7k55hl8dj", userID: 14, date: "2023/12/07", roomNumber: 1 },
 ];
@@ -14,6 +16,14 @@ const testRooms = [
     bedSize: "queen",
     numBeds: 2,
     costPerNight: 231.46,
+  },
+  {
+    number: 4,
+    roomType: "junior suite",
+    bidet: false,
+    bedSize: "queen",
+    numBeds: 2,
+    costPerNight: 239.46,
   },
   {
     number: 20,
@@ -45,6 +55,15 @@ const testRooms = [
     costPerNight: 328.15,
     numBeds: 2,
     number: 21,
+    roomType: "junior suite",
+  },
+
+  {
+    bedSize: "king",
+    bidet: true,
+    costPerNight: 328.15,
+    numBeds: 2,
+    number: 5,
     roomType: "junior suite",
   },
 ];

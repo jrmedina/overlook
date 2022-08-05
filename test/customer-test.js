@@ -19,7 +19,7 @@ beforeEach(() => {
   roomsData = testRooms.map((room) => new Room(room));
 });
 
-it("should be able to retrieve  data from test file", () => {
+it("should be able to retrieve data from test file", () => {
   expect(customer1).to.deep.equal({
     id: 27,
     name: "Sigrid Barrows",

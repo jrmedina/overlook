@@ -1,4 +1,3 @@
-
 class Customer {
   constructor(customerData) {
     this.id = customerData.id;
@@ -7,11 +6,8 @@ class Customer {
   }
 
   getBookings(bookings, rooms) {
-    this.bookings = bookings.filter(booking => booking.userID === this.id
-    );
-    this.bookings.forEach((booking) => {
-      booking.getRoomDetails(rooms);
-    });
+    this.bookings = bookings.filter((booking) => booking.userID === this.id);
+    this.bookings.forEach((booking) => booking.getRoomDetails(rooms));
   }
 
   getPoints() {
