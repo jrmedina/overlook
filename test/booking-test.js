@@ -9,19 +9,17 @@ describe("booking", () => {
   expect(Booking).to.be.a("function");
 });
 
-let room1;
-let booking1;
 let bookingsData;
 let roomsData;
+let booking1;
 
 beforeEach(() => {
-  booking1 = new Booking(testBookings[1]);
-  room1 = new Room(testRooms[0]);
-  bookingsData = testBookings;
-  roomsData = testRooms;
+  bookingsData = testBookings.map(booking => new Booking(booking))
+  roomsData = testRooms.map((room) => new Room(room));
+  booking1 = bookingsData[1];
 });
 
-it("should be able to retrieve room details that have the same room number in the booking", () => {
+it("should be able to retrieve room details by the room number on the booking", () => {
   booking1.getRoomDetails(roomsData);
   expect(booking1.roomDetails).to.deep.equal({
     bedSize: "twin",
