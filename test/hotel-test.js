@@ -33,16 +33,14 @@ it("should be able to take in a date and return available rooms", () => {
   expect(hotel.availableRooms.length).to.equal(0);
   hotel.findAvailability("2022/02/13");
   expect(hotel.availableRooms.length).to.equal(5);
-  expect(hotel.availableRooms).to.deep.include(
-    {
-      number: 22,
-      roomType: "single room",
-      bidet: false,
-      bedSize: "full",
-      numBeds: 2,
-      costPerNight: 350.31,
-    },
-  );
+  expect(hotel.availableRooms).to.deep.include({
+    number: 22,
+    roomType: "single room",
+    bidet: false,
+    bedSize: "full",
+    numBeds: 2,
+    costPerNight: 350.31,
+  });
 });
 
 it("should be able to filter available rooms by type", () => {
@@ -55,9 +53,26 @@ it("should be able to filter available rooms by type", () => {
     numBeds: 2,
     costPerNight: 231.46,
   });
-
 });
 
+it("should be able to take in a username and return a matching customer", () => {
+  expect(hotel.findCustomer("customer50")).to.deep.equal({
+    id: 50,
+    name: "Eldridge Muller", 
+    bookings: [],
+    username: 'customer50',
+    password: 'overlook2021'
+  });
+});
+
+it('should be able to validate credentials for login', () => {
+expect(hotel.checkLogin("customer50", "overlook2021")).to.equal(true);
+expect(hotel.checkLogin("cstomcre", "overlook2021")).to.equal(false);
+expect(hotel.checkLogin("customer50", "overlook1111")).to.equal(false);
+
+
+
+})
 // it("should be able to return rooms that are already booked", () => {
 //   expect(hotel.findAvailability("2022/02/13")).to.deep.equal([
 //     {

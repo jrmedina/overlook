@@ -19,11 +19,13 @@ beforeEach(() => {
   roomsData = testRooms.map((room) => new Room(room));
 });
 
-it("should be able to retrieve data from test file", () => {
+it("should be able to retrieve data from test file and generate login credentials", () => {
   expect(customer1).to.deep.equal({
     id: 27,
     name: "Sigrid Barrows",
     bookings: [],
+    password: "overlook2021",
+    username: "customer27"
   });
 });
 

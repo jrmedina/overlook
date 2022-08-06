@@ -24,8 +24,22 @@ class Hotel {
 
   filterRoomsByType(input) {
     return this.availableRooms.filter((room) => room.roomType === input);
+    // potentially reassign the availableRooms key to the result of this method instead of 'matching'
   }
-  // potentially reassign the availableRooms key to the result of this method instead of 'matching'
+
+  findCustomer(input) {
+    let id = input.split("customer").join("");
+    return this.customers.find((guest) => guest.id === parseInt(id));
+  }
+
+  checkLogin(username, password) {
+    let match = this.findCustomer(username) || "no match";
+    if (username === match.username && password === "overlook2021") {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 export default Hotel;

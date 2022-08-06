@@ -13,6 +13,7 @@
     <nav class="nav-bar">
       <button type="button" class="nav-booking">Booking</button>
       <button type="button" class="nav-login">log-in</button>
+      <button class="nav-logout hidden" type="button">log-out</button>
     </nav>
 
     <!-- -----------Login Section-------------- -->
@@ -23,8 +24,9 @@
       <h3>Password:</h3>
       <input class="password-input" type="password" placeholder="input here" />
       <p class="login-error hidden">incorrect credentials, try again!</p>
-      <button class="login-btn" type="button">Submit</button>
+      <button class="login-btn" type="button">Log In</button>
     </section>
+     
 
     <!-- -----------Guest Dashboard-------------- -->
     <section class="guest-dashboard hidden">
@@ -51,21 +53,25 @@
 
     <!-- -----------Booking Tab-------------- -->
     <section class="booking-tab hidden">
-      <section class="calendar">
-        <input type="date" />
+      <section>
+        <input class="calendar" type="date" value="" />
+        <button class="search-dates" type="button">search</button>
       </section>
-      <section class="room-details">
-        [details for only available rooms]
-        <button class="filter-details" type="button">filter</button>
-      </section>
+      <section class="room-types"></section>
     </section>
 
     <!-- -----------Filtered Results-------------- -->
     <section class="filtered-results hidden">
-      <article class="reservation-details filtered">
+      <p class="total"></p>
+
+      <article class="room-details filtered">
         <img class="room-img filtered" src="" />
-        <p class="reservation-date filtered">2030/28/06</p>
-        <p class="reservation-cost filtered">$675.07</p>
+        <p class="roomType filtered"></p>
+        <p class="bedSize filtered"></p>
+        <p class="numBeds filtered"></p>
+        <p class="date filtered"></p>
+        <p class="cost filtered"></p>
+        <p class="bidet filtered"></p>
       </article>
 
       <!-- -----------Booking Error-------------- -->

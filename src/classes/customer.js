@@ -3,6 +3,8 @@ class Customer {
     this.id = customerData.id;
     this.name = customerData.name;
     this.bookings = [];
+    this.username = `customer${this.id}`
+    this.password = `overlook2021`
   }
 
   getBookings(bookings, rooms) {
@@ -16,6 +18,11 @@ class Customer {
       return total;
     }, 0);
   }
+
+  // createLogin() {
+  //   this.username = `customer${this.id}`
+  //   this.password = `overlook2021`
+  // }
 }
 
 export default Customer;
