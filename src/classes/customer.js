@@ -18,11 +18,6 @@ class Customer {
       return total;
     }, 0);
   }
-
-  // createLogin() {
-  //   this.username = `customer${this.id}`
-  //   this.password = `overlook2021`
-  // }
 }
 
 export default Customer;

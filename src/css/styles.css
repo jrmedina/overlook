@@ -11,6 +11,10 @@ body {
   height: max-content;
 }
 
+.book-it-btn {
+  background-color: aqua;
+}
+
 
 .hidden{
   display:none;

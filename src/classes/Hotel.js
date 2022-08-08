@@ -24,7 +24,6 @@ class Hotel {
 
   filterRoomsByType(input) {
     return this.availableRooms.filter((room) => room.roomType === input);
-    // potentially reassign the availableRooms key to the result of this method instead of 'matching'
   }
 
   findCustomer(input) {
