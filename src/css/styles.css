@@ -1,20 +1,223 @@
 * {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin: 0px;
-    padding: 0px;
+  padding: 0px;
 }
 
-
+html {
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('../images/lobby2.png') no-repeat center center fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-  height: max-content;
+  height: 100vh;
+  width: 100vw;
 }
 
-.book-it-btn {
-  background-color: aqua;
+.nav-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5%;
+  width: 100%;
+  padding-top: 2%;
+  /* background: whitesmoke; */
 }
 
+.login-container{
+display: flex;
+height: 100%;
+width: 50%;
+border: 2px solid;
+justify-content: center;
+border: none;
+}
+
+.logout-container {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  border: 2px solid;
+  justify-content: center;
+  border: none;
+}
+
+.booking-container {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  border: 2px solid;
+  justify-content: center;
+  border: none;
+  
+}
+.booking {
+  border: 2px red solid;
+  width: 50%;
+  align-self: center;
+
+}
+.nav-login{
+  width: 20%;
+}
+
+.nav-booking {
+  width: 20%;
+}
+
+.nav-logout {
+  width: 20%;
+}
+/* .nav-login:hover{
+  cursor: pointer;
+}
+.nav-booking:hover {
+  cursor: pointer;
+}
+.nav-logout:hover {
+  cursor: pointer;
+} */
+
+.booking-tab {
+ display: flex;
+flex-direction: column;
+  height: 30%; 
+  width: 100%;
+  /* border: 2px green solid;  */
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-evenly;
+  height: 100%;
+  width: 100%;
+}
+
+.calendar{
+  height: 30%;
+  width: 30%;
+  /* align-items: center;
+  justify-content: center; */
+  text-align: center;
+  font-size: xx-large;
+  cursor: pointer;
+}
+
+.calendar-error {
+  color: firebrick;
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.login-portal {
+  padding-top: 2%;
+  display: flex;
+  flex-direction: column;
+  /* background: orangered; */
+  height: 30%;
+  width: 90%;
+
+}
+
+.login-btn {
+  padding-top: 5%;
+  font-size: larger;
+}
+.close-portal {
+  width: 3%;
+  align-self: flex-end;
+  text-align: right;
+  font-size: large;
+  border: none;
+  background: none;
+  padding-right: 1%;
+}
+
+.portal-container {
+  display: flex;
+  width: 20%;
+  height: 60%;
+  flex-direction: column;
+  padding: 2%;
+  background: whitesmoke;
+  align-self:flex-end;
+  justify-content:center;
+  border-radius: 10%;
+}
+
+.room-types {
+  display: flex;
+  height: 50%;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.room-types button {
+  width: 20%;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+button {
+  background: whitesmoke;
+  border: none;
+  font-size: larger;
+}
+
+.login-error {
+  color: firebrick;
+  font-size: larger;
+}
+
+.search-dates {
+  width:15%;
+  height:20%;
+}
+
+.filtered-results {
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+/* justify-content: center; */
+height: 90%;
+width: 100%;
+flex-wrap: wrap;
+}
+
+.room-details{
+display:flex;
+flex-direction: column;
+align-content: center;
+justify-content: center;
+background: whitesmoke;
+width: 140px;
+height: 140px;
+text-align: center;
+border-radius: 10%;
+padding: 5%;
+}
+
+.calendar
+
+.room-details p{
+  /* align-self: center; */
+  font-size: larger;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* justify-self: center; */
+  text-align: center;
+  /* background: green; */
+  height: 100%;
+  width: 140px;
+}
 
 .hidden{
   display:none;

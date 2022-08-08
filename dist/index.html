@@ -11,20 +11,32 @@
   <body>
     <!-- -----------Nav Bar-------------- -->
     <nav class="nav-bar">
-      <button type="button" class="nav-booking">Booking</button>
-      <button type="button" class="nav-login">log-in</button>
+      <section class="booking-container">
+      <button type="button" class="nav-booking">booking</button>
+      </section>
+           <section class="logout-container">
       <button class="nav-logout hidden" type="button">log-out</button>
+      </section>
+      <section class="login-container">
+        <!-- <img src="../src/images/hotel-bell.png"/> -->
+      <button type="button" class="nav-login">log-in</button>
+      </section>
+ 
     </nav>
 
     <!-- -----------Login Section-------------- -->
     <section class="login-portal hidden">
-      <button class="close-portal">X</button>
+      <button class="close-portal">❌</button>
+      <section class="portal-container">
       <h3>Username:</h3>
       <input class="username-input" placeholder="input here" />
+      <br>
       <h3>Password:</h3>
       <input class="password-input" type="password" placeholder="input here" />
       <p class="login-error hidden">incorrect credentials, try again!</p>
       <button class="login-btn" type="button">Log In</button>
+      </section>
+
     </section>
 
     <!-- -----------Guest Dashboard-------------- -->
@@ -52,8 +64,9 @@
 
     <!-- -----------Booking Tab-------------- -->
     <section class="booking-tab hidden">
-      <section>
+      <section class="calendar-container">
         <input class="calendar" type="date" min="2022-08-08" value="" />
+        <p class ="calendar-error hidden">Please select a date to see availability.</p>
         <button class="search-dates" type="button">search</button>
       </section>
       <section class="room-types"></section>
@@ -61,17 +74,17 @@
 
     <!-- -----------Filtered Results-------------- -->
     <section class="filtered-results hidden">
-      <p class="total"></p>
+      <!-- <p class="total">Total points: 234t36</p> -->
       <article class="room-details filtered">
+        <p tabindex="0" class="date filtered">12/12/1220</p>
         <img class="room-img filtered" src="" />
-        <p class="roomType filtered"></p>
-        <p class="bedSize filtered"></p>
-        <p class="numBeds filtered"></p>
-        <p class="date filtered"></p>
-        <p class="cost filtered"></p>
-        <p class="bidet filtered"></p>
+        <p tabindex="0" class="roomType filtered">junior suite</p>
+        <p tabindex="0" class="bedSize filtered">queen</p>
+        <p tabindex="0" class="numBeds filtered">2</p>
+        <p tabindex="0" class="bidet filtered">True</p>
+         <p tabindex="0" class="cost filtered">$456.67</p>
       </article>
-
+  
       <!-- -----------Booking Error-------------- -->
       <section class="booking-error hidden">
         <button class="close-error">X</button>

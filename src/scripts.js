@@ -26,7 +26,7 @@ const usernameInput = document.querySelector(".username-input");
 const passwordInput = document.querySelector(".password-input");
 const submitLoginButton = document.querySelector(".login-btn");
 const invalidLogin = document.querySelector(".login-error");
-const calender = document.querySelector('input[type="date"]');
+const calendar = document.querySelector('input[type="date"]');
 const searchDates = document.querySelector(".search-dates");
 const roomTypeSection = document.querySelector(".room-types");
 const roomDetails = document.querySelector(".room-details");
@@ -35,6 +35,7 @@ const bookingButton = document.querySelector(".nav-booking");
 const totalPoints = document.querySelector(".total");
 const resultsSection = document.querySelector(".filtered-results");
 const bookingBtn = document.querySelector(".booking");
+const calendarError = document.querySelector(".calendar-error");
 
 // -------------------EVENT-------------------
 loginButton.addEventListener("click", displayLogin);
@@ -62,10 +63,15 @@ function loadData() {
 }
 
 function searchAvailableDates() {
-  let calenderSplit = calender.value.split("-");
-  let calenderJoined = calenderSplit.join("/");
-  hotel.findAvailability(calenderJoined);
+  if(calendar.value === ''){
+    show(calendarError)
+  } else {
+  let calendarSplit = calendar.value.split("-");
+  let calendarJoined = calendarSplit.join("/");
+  hide(calendarError);
+  hotel.findAvailability(calendarJoined);
   displayAvailableRoomTypes();
+  }
 }
 
 function displayAvailableRoomTypes() {
@@ -105,14 +111,14 @@ function cloneFilteredRooms(rooms) {
     bookButton.innerText = "Book Room";
     bookButton.id = type.number;
     bookButton.addEventListener("click", bookRoom);
-    room.querySelector(".roomType").innerText = type.roomType;
-    room.querySelector(".bidet").innerText = type.bidet;
-    room.querySelector(".bedSize").innerText = type.bedSize;
-    room.querySelector(".numBeds").innerText = type.numBeds;
-    room.querySelector(".date").innerText = calender.value;
-    room.querySelector(".cost").innerText = type.costPerNight;
-    resultsSection.appendChild(bookButton);
+    room.querySelector(".roomType").innerText = `Room Type: ${type.roomType}`
+    room.querySelector(".bidet").innerText = `Has Bidet: ${type.bidet}`
+    room.querySelector(".bedSize").innerText = `Bed Size: ${type.bedSize}`
+    room.querySelector(".numBeds").innerText = `Number of Beds: ${type.numBeds}`
+    room.querySelector(".date").innerText = `Date: ${calendar.value}`
+    room.querySelector(".cost").innerText = `Price Per Night: ${type.costPerNight}`;
     resultsSection.appendChild(room);
+    room.appendChild(bookButton);
   });
   show(resultsSection);
 }
@@ -159,9 +165,9 @@ function cloneCustomersRooms(rooms) {
     room.querySelector(".cost").innerText = type.roomDetails.costPerNight;
     resultsSection.appendChild(room);
   });
-  totalPoints.innerText = `Your Total Points: ${customer
-    .getPoints()
-    .toFixed(2)}`;
+  // totalPoints.innerText = `Your Total Points: ${customer
+  //   .getPoints()
+  //   .toFixed(2)}`;
   show(resultsSection);
 }
 
@@ -172,8 +178,8 @@ function displayBooking() {
 }
 
 function bookRoom(e) {
-  let calenderSplit = calender.value.split("-");
-  let calenderJoined = calenderSplit.join("/");
+  let calendarSplit = calendar.value.split("-");
+  let calendarJoined = calendarSplit.join("/");
   let id = e.target.id;
 
   if (customer === undefined) {
@@ -181,7 +187,7 @@ function bookRoom(e) {
   } else {
     let booking = {
       userID: customer.id,
-      date: calenderJoined,
+      date: calendarJoined,
       roomNumber: parseInt(id)
     };
     addBooking(booking).then(newRes => console.log(newRes))
