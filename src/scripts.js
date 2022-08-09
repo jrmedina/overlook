@@ -5,49 +5,50 @@ import Customer from "./classes/customer";
 import Hotel from "./classes/hotel";
 import { allData } from "./apiCalls";
 
+var addBooking;
+var bookingsData;
 var customerData;
 var customer;
-var roomsData;
-var bookingsData;
-var addBooking;
 var hotel;
+var roomsData;
 
 // -------------------QUERY-------------------
+
+const bookingButton = document.querySelector(".nav-booking");
+const bookingError = document.querySelector(".booking-error");
+const bookingTab = document.querySelector(".booking-tab");
+const calendar = document.querySelector('input[type="date"]');
+const calendarError = document.querySelector(".calendar-error");
+const currentPoints = document.querySelector(".current-points");
+const errorMessage = document.querySelector(".close-error");
+const header = document.querySelector(".mid-container");
+const homeButton = document.querySelector(".nav-home");
+const invalidLogin = document.querySelector(".login-error");
+const imgContainer = document.querySelector(".img-container");
 const loginButton = document.querySelector(".nav-login");
 const logoutButton = document.querySelector(".nav-logout");
 const loginPortal = document.querySelector(".login-portal");
 const portalExit = document.querySelector(".close-portal");
-const usernameInput = document.querySelector(".username-input");
 const passwordInput = document.querySelector(".password-input");
-const submitLoginButton = document.querySelector(".login-btn");
-const invalidLogin = document.querySelector(".login-error");
-const calendar = document.querySelector('input[type="date"]');
-const searchDates = document.querySelector(".search-dates");
 const roomTypeSection = document.querySelector(".room-types");
 const roomDetails = document.querySelector(".room-details");
-const bookingTab = document.querySelector(".booking-tab");
-const bookingButton = document.querySelector(".nav-booking");
-const currentPoints = document.querySelector(".current-points");
+const searchDates = document.querySelector(".search-dates");
+const submitLoginButton = document.querySelector(".login-btn");
 const resultsSection = document.querySelector(".filtered-results");
-const bookingBtn = document.querySelector(".booking");
-const calendarError = document.querySelector(".calendar-error");
-const bookingError = document.querySelector(".booking-error");
-const imgContainer = document.querySelector(".img-container");
-const header = document.querySelector(".mid-container")
-const homeButton = document.querySelector(".nav-home");
-const errorMessage = document.querySelector(".close-error");
+const usernameInput = document.querySelector(".username-input");
 
 // -------------------EVENT-------------------
-loginButton.addEventListener("click", displayLogin);
+
+bookingButton.addEventListener("click", displayBooking);
 errorMessage.addEventListener("click", closeError);
 homeButton.addEventListener("click", displayHome);
+loginButton.addEventListener("click", displayLogin);
 logoutButton.addEventListener("click", logoutCustomer);
-submitLoginButton.addEventListener("click", submitLogin);
-bookingButton.addEventListener("click", displayBooking);
 portalExit.addEventListener("click", closePortal);
-window.addEventListener("load", getData);
 roomTypeSection.addEventListener("click", filterRooms);
 searchDates.addEventListener("click", searchAvailableDates);
+submitLoginButton.addEventListener("click", submitLogin);
+window.addEventListener("load", getData);
 
 function getData() {
   allData.then((data) => {
@@ -102,16 +103,15 @@ function filterRooms(e) {
 
 function cloneFilteredRooms(rooms) {
   rooms.forEach((type) => {
-    console.log(type);
     let room = roomDetails.cloneNode(true);
-  show(room)
+    show(room);
     let bookButton = document.createElement("button");
     bookButton.classList.add("booking");
     bookButton.innerText = "Book Room";
     bookButton.id = type.number;
     bookButton.addEventListener("click", bookRoom);
     room.querySelector(".roomType").innerText = `Room Type: ${type.roomType}`;
-    room.querySelector(".bidet").innerText = `Has Bidet: ${type.bidet}`;
+    room.querySelector(".bidet").innerText = `${bidet(type.bidet)}`;
     room.querySelector(".bedSize").innerText = `Bed: ${type.bedSize}`;
     room.querySelector(
       ".numBeds"
@@ -131,13 +131,12 @@ function bookRoom(e) {
   let calendarJoined = calendarSplit.join("/");
   let id = e.target.id;
 
-
   if (customer === undefined) {
-    show(bookingError)
+    show(bookingError);
   } else {
     show(bookingError);
     bookingError.style.color = `#228B22`;
-    bookingError.innerText = `Booking Confirmed! Your points will be updated after your stay.`
+    bookingError.innerText = `Booking Confirmed! Your points will be updated after your stay.`;
     let booking = {
       userID: customer.id,
       date: calendarJoined,
@@ -148,7 +147,7 @@ function bookRoom(e) {
 }
 
 function submitLogin() {
-  hide(imgContainer)
+  hide(imgContainer);
   if (hotel.checkLogin(usernameInput.value, passwordInput.value)) {
     hide(loginPortal);
     show(logoutButton);
@@ -169,21 +168,36 @@ function submitLogin() {
 function cloneCustomersRooms(rooms) {
   rooms.forEach((type) => {
     let room = roomDetails.cloneNode(true);
-     show(room);
+    show(room);
     room.classList.add("room");
-    room.querySelector(".roomType").innerText = `Room Type: ${type.roomDetails.roomType}`;
-    room.querySelector(".bidet").innerText = `Has Bidet: ${type.roomDetails.bidet}`;
-    room.querySelector(".bedSize").innerText = `Bed: ${type.roomDetails.bedSize}`;
-    room.querySelector(".numBeds").innerText = `Number of Beds: ${type.roomDetails.numBeds}`;
+    room.querySelector(
+      ".roomType"
+    ).innerText = `Room Type: ${type.roomDetails.roomType}`;
+    room.querySelector(".bidet").innerText = `${bidet(type.roomDetails.bidet)}`;
+    room.querySelector(
+      ".bedSize"
+    ).innerText = `Bed: ${type.roomDetails.bedSize}`;
+    room.querySelector(
+      ".numBeds"
+    ).innerText = `Number of Beds: ${type.roomDetails.numBeds}`;
     room.querySelector(".date").innerText = `Date:  ${type.date}`;
-    room.querySelector(".cost").innerText = `Cost: $${type.roomDetails.costPerNight} USD`;
+    room.querySelector(
+      ".cost"
+    ).innerText = `Cost: $${type.roomDetails.costPerNight} USD`;
     resultsSection.appendChild(room);
   });
   show(resultsSection);
 }
 
+function bidet(value) {
+  if (value) {
+    return `It has a Bidet!`;
+  } else {
+    return ``;
+  }
+}
+
 function displayFilteredRooms(rooms) {
-  // hide(header);
   roomTypeSection.innerHTML = ``;
   hide(bookingTab);
   cloneFilteredRooms(rooms);
@@ -193,6 +207,7 @@ function displayLogin() {
   hide(loginButton);
   hide(bookingTab);
   hide(resultsSection);
+  hide(invalidLogin);
   show(header);
   show(loginPortal);
   show(imgContainer);
@@ -236,10 +251,8 @@ function closePortal() {
 }
 
 function closeError() {
-  hide(bookingError)
+  hide(bookingError);
 }
-
-
 
 function hide(el) {
   el.classList.add("hidden");
