@@ -4,17 +4,7 @@
   padding: 0px;
 }
 
-/* html {
-   background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('../images/lobby2.png') no-repeat center center fixed;
-  background-size: cover;
-  background-repeat: no-repeat; 
-  height: 100vh;
-  width: 100vw;
-  margin: 0%;
-  overflow: hidden;
-} */
 body {
-
   background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('../images/lobby2.png') no-repeat center center fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -22,7 +12,6 @@ body {
   width: 100vw;
   margin: 0%;
 font-family: 'Alegreya Sans', sans-serif;
-/* overflow-x: scroll; */
 }
 
 header {
@@ -57,12 +46,9 @@ header {
   display: flex;
   align-items: center;
   flex-direction: row;
-  /* align-items: flex-start; */
   justify-content: center;
   height: 50%;
   width: 100%;
-  /* overflow-x: scroll;  */
-  /* flex-wrap: wrap; */
 }
 
 input {
@@ -135,19 +121,7 @@ margin-bottom: 7%;
 .nav-button{
   width: 30%;
 }
-.booking-error{
-  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
-  color: firebrick;
-  font-weight:bolder;
-  padding-left: 2%;
-  text-align: center;
-  
-}
 
-.close-error{
- background: none;
- padding-left: 27%;
-}
 
 .booking-tab {
  display: flex;
@@ -183,7 +157,6 @@ flex-direction: column;
 .login-portal {
   display: flex;
   flex-direction: column;
-  /* background: orangered; */
   height: 100%;
   width: 40%;
   filter: drop-shadow(2px 3px 3px black);
@@ -191,19 +164,9 @@ flex-direction: column;
 
 .login-btn {
   align-self: center;
-  padding-top: 5%;
+ margin-top: 8%;
   width: 50%;
   font-size: larger;
-}
-
-.close-portal {
-  /* width: 1%; */
-  align-self: center;
-  text-align: right;
-  font-size: large;
-  border: none;
-  background: none;
-  padding-left: 30%;
 }
 
 .portal-container {
@@ -230,19 +193,62 @@ flex-direction: column;
   justify-content: space-evenly;
 }
 
-.room-types button {
+button{
   width: 20%;
+  align-items: center;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  color: #36395A;
+  display: inline-flex;
+  height: 65%;
+  justify-content: center;
+  transition: box-shadow .15s, transform .15s;
+  touch-action: manipulation;
+  will-change: box-shadow, transform;
+  font-size: 20px;
+  border: none;
 }
 
-button:hover{
+button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
   cursor: pointer;
 }
-
-button {
-  background: whitesmoke;
-  border: none;
-  font-size: larger;
+  
+.close-error {
+  background: none;
+  padding-left: 27%;
+  box-shadow: none;
 }
+
+.close-error:hover {
+  box-shadow: none;
+}
+
+.booking-error {
+  background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
+  color: firebrick;
+  font-weight: bolder;
+  padding-left: 2%;
+  text-align: center;
+}
+
+
+.close-portal {
+  align-self: center;
+  text-align: right;
+  font-size: large;
+  box-shadow: none;
+  background: none;
+  padding-left: 30%;
+}
+
+.close-portal:hover{
+  box-shadow: none;
+}
+
+
 
 .login-error {
   color: firebrick;
@@ -255,26 +261,26 @@ button {
 }
 
 .filtered-results {
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-height: 60%;
-width: 100%;
-flex-wrap: wrap;
-overflow-y: scroll;
-overflow-x: hidden;
-scroll-behavior: smooth;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 60%;
+  width: 100%;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .current-points{
-display: flex;
-font-size: x-large;
-text-align: center;
-font-weight: bolder;
-align-items: flex-start; 
-justify-content:center;
-padding-top: 3%;
-padding-right: 1%;
+  display: flex;
+  font-size: x-large;
+  text-align: center;
+  font-weight: bolder;
+  align-items: flex-start; 
+  justify-content:center;
+  padding-top: 3%;
+  padding-right: 1%;
 }
 
 .room-details{
