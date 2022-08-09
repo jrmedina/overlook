@@ -5,80 +5,104 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="A Hotel Website" />
-    <title>Hotel</title>
+    <title>Overlook Resort</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&display=swap" rel="stylesheet">
   </head>
 
+  <!-- -----------Nav Bar-------------- -->
+  <nav class="nav-bar">
+        </section>
+      <section class="home-container nav">
+      <button type="button" class="nav-home hidden nav-button">home</button>
+    </section>
+    <section class="booking-container nav">
+      <button type="button" class="nav-booking nav-button">booking</button>
+    </section>
+
+    <section class="login-container nav">
+      <button type="button" class="nav-login nav-button">log-in</button>
+    </section>
+   <section class="logout-container nav">
+      <button class="nav-logout hidden nav-button" type="button">log-out</button>
+    </section>
+  </nav>
+
   <body>
-    <!-- -----------Nav Bar-------------- -->
-    <nav class="nav-bar">
-      <button type="button" class="nav-booking">Booking</button>
-      <button type="button" class="nav-login">log-in</button>
-    </nav>
-
-    <!-- -----------Login Section-------------- -->
-    <section class="login-portal hidden">
-      <button class="close-portal">X</button>
-      <h3>Username:</h3>
-      <input class="username-input" placeholder="input here" />
-      <h3>Password:</h3>
-      <input class="password-input" type="password" placeholder="input here" />
-      <p class="login-error hidden">incorrect credentials, try again!</p>
-      <button class="login-btn" type="button">Submit</button>
-    </section>
-
-    <!-- -----------Guest Dashboard-------------- -->
-    <section class="guest-dashboard hidden">
-      <section class="guest-points">Current Points: 42020</section>
-      <header class="greeting">Welcome back, Josh</header>
-      <section class="upcoming-stays">
-        <h3>Upcoming Stays:</h3>
-        <article class="reservation-details upcoming">
-          <img class="room-img past" src="" />
-          <p class="reservation-date upcoming">2019/28/06</p>
-          <p class="reservation-cost upcoming">$675.07</p>
-        </article>
-      </section>
-      <section class="past-stays">
-        Previous Stays:
-        <h3>Previous Stays:</h3>
-        <article class="reservation-details past">
-          <img class="room-img past" src="" />
-          <p class="reservation-date past">2030/28/06</p>
-          <p class="reservation-cost past">$675.07</p>
-        </article>
+    <section class="mid-container">
+      <header >Overlook Resort</header>
+      <section class="current-points"></section>
+      <!-- -----------Login Section-------------- -->
+      <section class="login-portal hidden">
+        <button aria-label="close portal" class="close-portal">❌</button>
+        <section class="portal-container">
+          <h3>Username:</h3>
+          <input aria-required="true" class="username-input" placeholder="username" />
+          <br />
+          <h3>Password:</h3>
+          <input aria-required="true"
+            class="password-input"
+            type="password"
+            placeholder="password"
+          />
+          <p class="login-error hidden">Incorrect credentials, try again!</p>
+          <button class="login-btn" type="button">Log In</button>
+        </section>
       </section>
     </section>
-
+   
     <!-- -----------Booking Tab-------------- -->
     <section class="booking-tab hidden">
-      <section class="calendar">
-        <input type="date" />
+      <section class="calendar-container">
+        <input class="calendar" type="date" min="" />
+        <p class="calendar-error hidden">
+          Please select a date to see availability.
+        </p>
+        <button class="search-dates" type="button">search</button>
       </section>
-      <section class="room-details">
-        [details for only available rooms]
-        <button class="filter-details" type="button">filter</button>
-      </section>
+      <section class="room-types" ></section>
     </section>
 
+
+          <!-- -----------Booking Error-------------- -->
+      <section class="booking-error hidden">
+        <button aria-label="close portal" class="close-error">❌</button>
+        <br>
+        <h1>
+       We apologize, please login to continue with this booking
+        </h1>
+      </section>
+      
     <!-- -----------Filtered Results-------------- -->
     <section class="filtered-results hidden">
-      <article class="reservation-details filtered">
-        <img class="room-img filtered" src="" />
-        <p class="reservation-date filtered">2030/28/06</p>
-        <p class="reservation-cost filtered">$675.07</p>
-      </article>
-
-      <!-- -----------Booking Error-------------- -->
-      <section class="booking-error hidden">
-        <button class="close-error">X</button>
-        <h2>
-          We appologize! This day is already booked, please try selecting
-          another date.
-        </h2>
-      </section>
     </section>
+    <!-- ------------Image Container------------ -->
+    <section class="img-container">
+      <section tabindex="0" class="img1 img" aria-label="lobby stairs image"></section>
+      <section tabindex="0" class="img2 img" aria-label="high tea image"></section>
+      <section tabindex="0" class="img3 img" aria-label="bar lounge image"></section>
+      <section tabindex="0" class="img4 img" aria-label="king bed image"></section>
+      <section tabindex="0" class="img5 img" aria-label="queen bed image"></section>
+    </section>
+      </body>
+<!-- --------------Room Template-------------- -->
+        <article class="room-details hidden">
+        <p tabindex="0" class="date"></p>
+        <p tabindex="0" class="roomType"></p>
+        <p tabindex="0" class="bedSize"></p>
+        <p tabindex="0" class="numBeds"></p>
+        <p tabindex="0" class="bidet"></p>
+        <p tabindex="0" class="cost"></p>
+         </article>
 
     <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
     <script src="bundle.js"></script>
-  </body>
+
 </html>
