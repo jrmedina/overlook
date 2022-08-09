@@ -3,8 +3,8 @@ class Customer {
     this.id = customerData.id;
     this.name = customerData.name;
     this.bookings = [];
-    this.username = `customer${this.id}`
-    this.password = `overlook2021`
+    this.username = `customer${this.id}`;
+    this.password = `overlook2021`;
   }
 
   getBookings(bookings, rooms) {
@@ -13,10 +13,11 @@ class Customer {
   }
 
   getPoints() {
-    return this.bookings.reduce((total, cur) => {
+    let total = this.bookings.reduce((total, cur) => {
       total += cur.roomDetails.costPerNight;
       return total;
     }, 0);
+    return total.toFixed(2);
   }
 }
 
