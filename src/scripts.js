@@ -207,6 +207,7 @@ function displayLogin() {
   hide(loginButton);
   hide(bookingTab);
   hide(resultsSection);
+  hide(bookingError);
   hide(invalidLogin);
   show(header);
   show(loginPortal);
@@ -216,6 +217,7 @@ function displayLogin() {
 
 function displayHome() {
   hide(homeButton);
+  hide(bookingError);
   hide(bookingTab);
   hide(loginPortal);
   hide(resultsSection);
@@ -230,6 +232,7 @@ function logoutCustomer() {
   resultsSection.innerHTML = "";
   currentPoints.innerText = "";
   hide(logoutButton);
+  hide(bookingError);
   hide(resultsSection);
   show(loginButton);
   show(header);
@@ -242,6 +245,7 @@ function displayBooking() {
   show(homeButton);
   hide(imgContainer);
   hide(loginPortal);
+  hide(bookingError);
   resultsSection.innerText = "";
 }
 
