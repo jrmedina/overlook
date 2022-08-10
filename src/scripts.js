@@ -163,7 +163,6 @@ function submitLogin() {
     show(logoutButton);
     customer = hotel.findCustomer(usernameInput.value);
     customer.getBookings(hotel.bookings, hotel.rooms);
-    console.log(customer.bookings);
     show(currentPoints);
     currentPoints.innerText = `Welcome Back, ${
       customer.name
@@ -183,7 +182,6 @@ function displayDashboard() {
 
 function cloneCustomersRooms(rooms) {
   rooms.forEach((type) => {
-    console.log(11111, type);
     let room = roomDetails.cloneNode(true);
     show(room);
     room.classList.add("room");
