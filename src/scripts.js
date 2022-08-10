@@ -4,6 +4,7 @@ import Room from "./classes/room";
 import Customer from "./classes/customer";
 import Hotel from "./classes/hotel";
 import { allData } from "./apiCalls";
+// import { fetchData } from "./apiCalls";
 
 var addBooking;
 var bookingsData;
@@ -11,6 +12,8 @@ var customerData;
 var customer;
 var hotel;
 var roomsData;
+var fetchData;
+var newBooking;
 
 // -------------------QUERY-------------------
 
@@ -36,9 +39,10 @@ const searchDates = document.querySelector(".search-dates");
 const submitLoginButton = document.querySelector(".login-btn");
 const resultsSection = document.querySelector(".filtered-results");
 const usernameInput = document.querySelector(".username-input");
+const dashboardButton = document.querySelector(".dashboard-login");
 
 // -------------------EVENT-------------------
-
+dashboardButton.addEventListener("click", displayDashboard);
 bookingButton.addEventListener("click", displayBooking);
 errorMessage.addEventListener("click", closeError);
 homeButton.addEventListener("click", displayHome);
@@ -56,6 +60,7 @@ function getData() {
     roomsData = data[1].rooms.map((room) => new Room(room));
     bookingsData = data[2].bookings.map((booking) => new Booking(booking));
     addBooking = data[3];
+    fetchData = data[4];
     loadData();
   });
 }
@@ -130,7 +135,6 @@ function bookRoom(e) {
   let calendarSplit = calendar.value.split("-");
   let calendarJoined = calendarSplit.join("/");
   let id = e.target.id;
-
   if (customer === undefined) {
     show(bookingError);
   } else {
@@ -142,17 +146,24 @@ function bookRoom(e) {
       date: calendarJoined,
       roomNumber: parseInt(id),
     };
-    addBooking(booking).then((newRes) => console.log(newRes));
+    addBooking(booking).then((response) => {
+      newBooking = new Booking(response.newBooking);
+      hotel.bookings.push(newBooking);
+      setTimeout(displayDashboard, 2000);
+    });
   }
 }
 
 function submitLogin() {
+  resultsSection.innerHTML = "";
   hide(imgContainer);
   if (hotel.checkLogin(usernameInput.value, passwordInput.value)) {
+    show(dashboardButton);
     hide(loginPortal);
     show(logoutButton);
     customer = hotel.findCustomer(usernameInput.value);
     customer.getBookings(hotel.bookings, hotel.rooms);
+    console.log(customer.bookings);
     show(currentPoints);
     currentPoints.innerText = `Welcome Back, ${
       customer.name
@@ -161,12 +172,18 @@ function submitLogin() {
   } else {
     show(invalidLogin);
   }
-  usernameInput.value = ``;
-  passwordInput.value = ``;
+}
+
+function displayDashboard() {
+  resultsSection.innerHTML = "";
+  customer = hotel.findCustomer(usernameInput.value);
+  customer.getBookings(hotel.bookings, hotel.rooms);
+  cloneCustomersRooms(customer.bookings);
 }
 
 function cloneCustomersRooms(rooms) {
   rooms.forEach((type) => {
+    console.log(11111, type);
     let room = roomDetails.cloneNode(true);
     show(room);
     room.classList.add("room");
