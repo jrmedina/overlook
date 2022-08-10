@@ -7,8 +7,8 @@ class Hotel {
   }
 
   findAvailability(input) {
-    let booked = this.bookings.filter((res) => res.date === input);
-
+    let booked = this.bookings.filter((res) => res.date === input)
+      console.log(booked)
     function notAvailable(room) {
       let available = true;
       booked.forEach((res) => {
