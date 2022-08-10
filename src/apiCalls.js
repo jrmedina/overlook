@@ -26,28 +26,14 @@ function addBooking(bookingData) {
     .catch((error) => console.log(error));
 }
 
-function deleteBooking(id) {
-  return fetch(`http://localhost:3001/api/v1/bookings${id}`, {
-    method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(id),
-  })
-    .then((booking) => {
-      if (booking.ok) {
-        return booking.json();
-      } else {
-        throw Error(booking.status.Text);
-      }
-    })
-    .catch((error) => console.log(error));
-}
-
-let allData = Promise.all([
+ let allData = Promise.all([
   fetchData("customers"),
   fetchData("rooms"),
   fetchData("bookings"),
   addBooking,
-  deleteBooking,
+  fetchData
 ]);
+
+
 
 export { allData, addBooking };
