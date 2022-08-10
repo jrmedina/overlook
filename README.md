@@ -30,7 +30,6 @@
 <br>
 
 ## <b>Walkthrough:</b>
-
 https://user-images.githubusercontent.com/102757890/183786068-ac86fecf-44d7-42f4-adb1-f648a521099d.mp4
 
 <br>
