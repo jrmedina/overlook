@@ -28,9 +28,6 @@ const header = document.querySelector(".mid-container");
 const homeButton = document.querySelector(".nav-home");
 const invalidLogin = document.querySelector(".login-error");
 const imgContainer = document.querySelector(".img-container");
-const loginButton = document.querySelector(".nav-login");
-const logoutButton = document.querySelector(".nav-logout");
-const loginPortal = document.querySelector(".login-portal");
 const portalExit = document.querySelector(".close-portal");
 const passwordInput = document.querySelector(".password-input");
 const roomTypeSection = document.querySelector(".room-types");
@@ -46,8 +43,6 @@ dashboardButton.addEventListener("click", displayDashboard);
 bookingButton.addEventListener("click", displayBooking);
 errorMessage.addEventListener("click", closeError);
 homeButton.addEventListener("click", displayHome);
-loginButton.addEventListener("click", displayLogin);
-logoutButton.addEventListener("click", logoutCustomer);
 portalExit.addEventListener("click", closePortal);
 roomTypeSection.addEventListener("click", filterRooms);
 searchDates.addEventListener("click", searchAvailableDates);
@@ -68,6 +63,9 @@ function getData() {
 function loadData() {
   hotel = new Hotel(bookingsData, roomsData, customerData);
   calendar.min = new Date().toJSON().slice(0, 10);
+  customer = hotel.customers[29]
+  console.log(customer)
+ displayDashboard();
 }
 
 function searchAvailableDates() {
@@ -175,7 +173,7 @@ function submitLogin() {
 
 function displayDashboard() {
   resultsSection.innerHTML = "";
-  customer = hotel.findCustomer(usernameInput.value);
+  hide(imgContainer)
   customer.getBookings(hotel.bookings, hotel.rooms);
   cloneCustomersRooms(customer.bookings);
 }
@@ -256,10 +254,10 @@ function logoutCustomer() {
 
 function displayBooking() {
   show(bookingTab);
-  show(loginButton);
+
   show(homeButton);
   hide(imgContainer);
-  hide(loginPortal);
+
   hide(bookingError);
   resultsSection.innerText = "";
 }
